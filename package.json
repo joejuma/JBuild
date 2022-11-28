@@ -1,0 +1,24 @@
+{
+  "name": "jsbuild",
+  "version": "0.1.0",
+  "description": "A JavaScript file bundler. Makes multifile projects for web JS easy.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joejuma/jbuild.git"
+  },
+  "keywords": [
+    "JBuild",
+    "bundler",
+    "web"
+  ],
+  "author": "Joseph Juma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joejuma/jbuild/issues"
+  },
+  "homepage": "https://github.com/joejuma/jbuild#readme"
+}
