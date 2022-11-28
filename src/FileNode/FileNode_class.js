@@ -1,4 +1,16 @@
 class FileNode {
+   
+    /*
+        =======================================================================
+        # File Node (class)
+        -----------------------------------------------------------------------
+        A node which stores basic information about a file and can be given a
+        nickname. Has the ability to store what nodes depend on it ("children")
+        and what nodes it depends on ("parents"). Useful for creating a file
+        dependency graph.
+        =======================================================================
+    */
+
     constructor( name = "DEFAULT_FILE_NODE_NAME", filePath = "" ){
 
         /* Metadata */

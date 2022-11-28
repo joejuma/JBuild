@@ -2,6 +2,16 @@ const FileNode = require("../FileNode/FileNode_class.js");
 
 class NodeGraph {
 
+    /*
+        =======================================================================
+        # Node Graph (class)
+        ---
+        An encapsulating object which manages a collection of nodes and provides
+        methods for creating and serializing FileNodes in a directed graph. Used
+        to generate dependency graphs.
+        =======================================================================
+    */
+   
     constructor(){
         this.nodes = [];
     }
