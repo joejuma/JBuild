@@ -13,21 +13,22 @@ class NodeGraph {
     */
    
     constructor(){
-        this.nodes = [];
+        this.nodes = {};
     }
 
     addNode( name = undefined, filePath = undefined ){
         let _node = new FileNode(name, filePath);
-        this.nodes.push(_node);
-        return this.nodes[this.nodes.length - 1];
+        this.nodes[filePath] = _node;
+        return this.nodes[filePath];
     }
 
     getNodeDependencySequence(){
         let seq = [];
         
         // Generate nested sequence,
-        for( let i = 0; i < this.nodes.length; i++){
-            let _node = this.nodes[i];  // for simplicity.
+        let keys = Object.keys(this.nodes);
+        for( let i = 0; i < keys.length; i++){
+            let _node = this.nodes[keys[i]];  // for simplicity.
             if((seq.length - 1) < _node.distance){
                 seq.push([]);
             };

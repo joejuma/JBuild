@@ -41,17 +41,6 @@ const extractDependency = ( _code = "", lineRegex = undefined, extractRegex = un
 
     return data;
 };
-const extractRequireSyntaxDependencies = ( _code = "" ) => {
-    let lineRegex = /(.*?) = require\(["'](.*?)['"]\);/g;
-    let extractRegex = /require\(["'](.*?)["']\)/g;
-    return extractDependency(_code, lineRegex, extractRegex);
-};
-
-const extractImportSyntaxDependencies = ( _code = "" ) => {
-    const lineRegex = /import (.*?) from ['"](.*?)['"];/g;
-    const extractRegex = /from ['"](.*?)['"]/g;
-    return extractDependency(_code, lineRegex, extractRegex);
-};
 
 const processCode = ( _code = "" ) => {
     
