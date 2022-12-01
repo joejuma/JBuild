@@ -24,12 +24,13 @@ class NodeGraph {
 
     getNodeDependencySequence(){
         let seq = [];
-        
-        // Generate nested sequence,
-        let keys = Object.keys(this.nodes);
+        let keys = Object.keys(this.nodes).filter((k) => {
+            return !(( k === undefined )||( k === "undefined" ));
+        });
+
         for( let i = 0; i < keys.length; i++){
             let _node = this.nodes[keys[i]];  // for simplicity.
-            if((seq.length - 1) < _node.distance){
+            while((seq.length - 1) < _node.distance){
                 seq.push([]);
             };
             seq[_node.distance].push(_node);

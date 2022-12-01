@@ -38,10 +38,14 @@ const parseArguments = ( argv ) => {
 const main = () => {
     if( process.argv.length >= 4 ){
         let args = parseArguments(process.argv);
+        
+        // Generate file graph,
         let _graph = new NodeGraph();
-        console.log(_graph);
         _graph.addNode(parse.parseFile(args.inputFile, _graph));
-        console.log(_graph);
+
+        // Serialize code into a single file,
+        let _code = parse.serializeGraph(_graph);
+        fs.writeFileSync(args.outputFile, _code);
     }
     else {
         console.error("Insufficient number of arguments passed.");
