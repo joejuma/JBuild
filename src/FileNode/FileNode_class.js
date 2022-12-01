@@ -19,6 +19,7 @@ class FileNode {
 
         /* Node Data */
         this.distance = 0;
+        this.code = "";
         this.children = [];
         this.parents = [];  // aka "Dependencies"
     }
@@ -41,6 +42,10 @@ class FileNode {
 
     _addParent( parent ){
         this.parents.push(parent);
+    };
+
+    setCode( code ){
+        this.code = code;
     };
 
     addParent( parent ){
