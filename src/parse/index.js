@@ -2,6 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const NodeGraph = require("../NodeGraph/NodeGraph_class.js");
+const { printBanner, stripEmptyLines } = require("../utils/index.js");
 
 /* Functions */
 
@@ -22,7 +23,6 @@ const extractDependency = ( _code = "", lineRegex = undefined, extractRegex = un
             data.deps.push(_fp);
             data.code = data.code.replace(dep.input, "");
         };
-        
         line = lineRegex.exec(_code);
     };
 
@@ -103,12 +103,8 @@ const serializeGraph = ( _graph ) => {
     let _nodes = _graph.getNodeDependencySequence();
 
     for( let i = 0; i < _nodes.length; i++){
-        _code += _nodes[i].code;
-        _code += "\n/*";
-        for( let i = 0; i < 80; i++){
-            _code += "=";
-        };
-        _code += "*/\n";
+        _code += printBanner("Section");
+        _code += stripEmptyLines(_nodes[i].code);
     };
     return _code;
 };
