@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const NodeGraph = require("../NodeGraph/NodeGraph_class.js");
-const { printBanner, stripEmptyLines } = require("../utils/index.js");
+const { printBanner, stripEmptyLines, stripComments } = require("../utils/index.js");
 
 /* Functions */
 
@@ -48,7 +48,7 @@ const processCode = ( _code = "", _cwd = "" ) => {
     
     // Setup return object,
     let data = {
-        code: String(_code),
+        code: stripComments(String(_code)),
         deps: []
     };
 
