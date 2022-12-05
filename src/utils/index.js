@@ -1,5 +1,5 @@
 const { printMany, printWrapped, printBanner } = require("./print_utils.js");
-const { stripEmptyLines, stripComments } = require("./strip_utils.js");
+const { stripEmptyLines, stripComments, stripHangingSemicolons } = require("./strip_utils.js");
 
 module.exports = {
 	printMany,
@@ -7,4 +7,5 @@ module.exports = {
 	printBanner,
 	stripEmptyLines,
 	stripComments,
+	stripHangingSemicolons,
 };

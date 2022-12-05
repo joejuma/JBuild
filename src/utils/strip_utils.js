@@ -17,9 +17,15 @@ const stripComments = ( _code = "" ) => {
     return stripLineComments(stripBlockComments( _code ));
 };
 
+const stripHangingSemicolons = ( _code = "" ) => {
+    let regex = /(\s);(\s)/g;
+    return _code.replace(regex, "");
+};
+
 module.exports = {
     stripEmptyLines,
     stripLineComments,
     stripBlockComments,
     stripComments,
+    stripHangingSemicolons,
 };

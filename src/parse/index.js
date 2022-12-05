@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const NodeGraph = require("../NodeGraph/NodeGraph_class.js");
-const { printBanner, stripEmptyLines, stripComments } = require("../utils/index.js");
+const { printBanner, stripEmptyLines, stripComments, stripHangingSemicolons } = require("../utils/index.js");
 
 /* Functions */
 
