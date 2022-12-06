@@ -24,33 +24,39 @@ class FileNode {
         this.parents = [];  // aka "Dependencies"
     }
 
-    updateNodeDistance(){
-        // Get max child distance + 1,
-        for( let i = 0; i < this.children.length; i++){
+    /* Distance Methods */
+    recalculateDistance(){
+        
+        // Get maximum child distance +1,
+        for( let i = 0; i < this.children.length; i++ ){
             if( this.distance <= this.children[i].distance ){
                 this.distance = this.children[i].distance + 1;
             };
         };
-        // Update parents so distances are kept sensible.
-        this.parents.map( parent => parent.updateNodeDistance());
-    };
 
-    _addChild( child ){
+        // Remind dependencies to update their distances as well,
+        this.parents.map( parent => parent.recalculateDistance());
+        return;
+    }
+
+    /* Relation Management Methods */
+    addChild = ( child ) => {
         this.children.push(child);
-        this.updateNodeDistance();
-    };
-
-    _addParent( parent ){
-        this.parents.push(parent);
-    };
-
-    setCode( code ){
-        this.code = code;
+        this.recalculateDistance();
     };
 
     addParent( parent ){
-        this._addParent( parent );
-        parent._addChild(this);
+        this.parents.push(parent);
+    };
+
+    addDependency( parent ){
+        this.addParent( parent );
+        parent.addChild(this);
+    };
+
+    /* Content Methods */
+    setContent = ( _content = "" ) => {
+        this.content = _content;
     };
 }
 

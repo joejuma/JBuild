@@ -1,32 +1,21 @@
 const fs = require("fs");
 const path = require("path");
-const NodeGraph = require("./NodeGraph/NodeGraph_class");
-const parse = require("./parse");
-
-const parseArguments = ( argv ) => {
-    let args = {
-        inputFile: undefined,
-        outputFile: undefined,
-        lang: "JS"  // @todo: add multi-language support later.
-    };
-
-    args.inputFile = path.resolve(argv[2]);
-    args.outputFile = path.resolve(argv[3]);
-
-    return args;
-};
+const NodeGraph = require("./NodeGraph");
+const GraphBuilder = require("./GraphBuilder");
+const { parseFile, serializeGraph } = require("./parse");
+const { parseArguments } = require("./utils");
 
 const main = () => {
     if( process.argv.length >= 4 ){
         let args = parseArguments(process.argv);
         
         // Generate file graph,
-        let _graph = new NodeGraph();
-        _graph.addNode(parse.parseFile(args.inputFile, _graph));
+        let _builder = new GraphBuilder();
+        let _graph = _builder.parse(args.entryPoint);
 
         // Serialize code into a single file,
-        let _code = parse.serializeGraph(_graph);
-        fs.writeFileSync(args.outputFile, _code);
+        let _code = serializeGraph(_graph);
+        fs.writeFileSync(args.bundleFile, _code);
     }
     else {
         console.error("Insufficient number of arguments passed.");

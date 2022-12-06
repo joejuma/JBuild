@@ -6,6 +6,10 @@ class Square extends Polygon {
         super();
         this.sides = 4;
     };
-}
+
+    print = () => {
+        console.log(`I'm a square! I have ${this.sides} sides!`);
+    };
+};
 
 module.exports = Square;
