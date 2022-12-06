@@ -2,7 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const NodeGraph = require("../NodeGraph/NodeGraph_class.js");
-const { printBanner, stripEmptyLines, stripComments, stripHangingSemicolons } = require("../utils/index.js");
+const { printBanner, stripComments, cleanCode } = require("../utils/index.js");
 
 /* Functions */
 
@@ -52,7 +52,7 @@ const processCode = ( _code = "", _cwd = "" ) => {
         deps: []
     };
 
-    // Describ syntax specifications,
+    // Describe syntax specifications,
     let syntaxes = [
         {
             name: "require",
@@ -103,8 +103,9 @@ const serializeGraph = ( _graph ) => {
     let _nodes = _graph.getNodeDependencySequence();
 
     for( let i = 0; i < _nodes.length; i++){
+        console.log(_nodes[i].name);
         _code += printBanner("Section");
-        _code += stripEmptyLines(_nodes[i].code);
+        _code += cleanCode(_nodes[i].code);
     };
     return _code;
 };
