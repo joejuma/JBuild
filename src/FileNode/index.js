@@ -46,7 +46,12 @@ class FileNode {
     };
 
     addParent( parent ){
-        this.parents.push(parent);
+        if( parent !== undefined ){    
+            this.parents.push(parent);
+            return;
+        };
+        console.error("[ERROR] An undefined parent value was passed into FileNode.addParent()");
+        return;
     };
 
     addDependency( parent ){

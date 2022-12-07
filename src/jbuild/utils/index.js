@@ -1,4 +1,15 @@
+/* Code Cleanup */
+const stripEmptyLines = ( _code = "" ) => {
+    let regex = /^\s*[\r\n]/gm;
+    return _code.replace(regex, "");
+};
 
+const stripHangingSemicolons = ( _code = "" ) => {
+    let regex = /^;(\s)?/gm;
+    return _code.replace(regex, "");
+};
+
+/* Text Formatting */
 const printMany = ( value = "", count = 1 ) => {
 	let _s = "";
 	for( let i = 0; i < count; i++){
@@ -64,9 +75,13 @@ const printBanner = ( title = "" ) => {
 	return _code;
 };
 
+const parseArguments = require("./parseArguments.js");
 
 module.exports = {
-	printMany,
-	printWrapped,
-	printBanner,
+    stripEmptyLines,
+    stripHangingSemicolons,
+    printMany,
+    printWrapped,
+    printBanner,
+    parseArguments,
 };
