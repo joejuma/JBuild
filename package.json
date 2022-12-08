@@ -1,11 +1,13 @@
 {
-  "name": "jsbuild",
+  "name": "jbuild",
   "version": "0.1.0",
   "description": "A JavaScript file bundler. Makes multifile projects for web JS easy.",
+  "bin": "./src/index.js",
   "main": "./src/index.js",
   "scripts": {
     "test": "npm run dev ./test/src/index.js ./test/build/out.js",
-    "dev": "node ./src/index.js"
+    "dev": "node ./src/index.js",
+    "build": "pkg --out-path ./dist/ package.json"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/joejuma/jbuild/issues"
   },
-  "homepage": "https://github.com/joejuma/jbuild#readme"
+  "homepage": "https://github.com/joejuma/jbuild#readme",
+  "devDependencies": {
+    "pkg": "^5.8.0"
+  }
 }
