@@ -1,8 +1,8 @@
 /* Deps */
-const DependencyGraph = require("../DependencyGraph");
+const DependencyGraph = require("./DependencyGraph");
 const fs = require("fs");
 const path = require("path");
-const FileNode = require("../FileNode");
+const FileNode = require("./FileNode");
 const { createAnalyzer } = require("./codeAnalyzers");
 const { printBanner } = require("./utils");
 
