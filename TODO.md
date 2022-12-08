@@ -1,10 +1,5 @@
 # To Do
 
-## Version 1.0.0
-* Add `pkg` dependency.
-* Add a build script for building into an executable.
-* Rearrange the project structure to clean it up, and set it up for building.
-
 ## Version 1.5.0
 * Add actual language parameter support and parsing.
 * Implement C++ language support by implementing CPPCodeAnalyzer.
