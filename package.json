@@ -19,7 +19,7 @@
     "web"
   ],
   "author": "Joseph Juma",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joejuma/jbuild/issues"
   },
