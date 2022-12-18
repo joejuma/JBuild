@@ -18,6 +18,10 @@ const analyzeFile = ( _filepath, _graph, _analyzer ) => {
     
     console.log(`| Analyzing file ${_filepath}...`); // @jjuma: remove.
 
+    if( fs.existsSync(_filepath) && fs.lstatSync(_filepath).isDirectory()){
+        _filepath += "/index.js";
+    };
+
     // Create the current node & analyze the associated file,
     let _node = new FileNode();
     let _code = String(fs.readFileSync( _filepath ));
